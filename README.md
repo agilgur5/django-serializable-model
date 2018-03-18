@@ -174,9 +174,13 @@ I'd encourage you to read the source code, since it's shorter than this README :
 
 ## Compatibility
 
-Should work with Django 1.5-1.8 with Python 2.7.
+Should work with Django 1.5-1.9 with Python 2.7.
 
-Have not confirmed if this works with later or earlier versions yet, or with different versions of Python.
+Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
+
+Will have some problems with Django 2.0 as this may not work with Python 3 and because the Manager's `use_for_related_fields` has been removed.
+
+Have not confirmed if this works with earlier versions yet, or with different versions of Python.
 
 This was originally used in an older Django 1.5 codebase with Python 2.7.
 
