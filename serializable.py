@@ -57,7 +57,7 @@ class SerializableModel(models.Model):
 
             # get all joins for this field from the arguments
             arg_joins = [_split_joins(arg, only_join=True)
-                for arg in args if arg.startswith(field)]
+                         for arg in args if arg.startswith(field)]
             all_joins += arg_joins  # combine all joins on this field
 
             # recurse if related object actually exists
@@ -114,4 +114,3 @@ def _split_joins(join_string, only_join=False):
     if only_join:
         return join
     return field, join
-
