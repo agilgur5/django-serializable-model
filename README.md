@@ -174,11 +174,11 @@ I'd encourage you to read the source code, since it's shorter than this README :
 
 ## Compatibility
 
-This is a good question. It was used in an older Django 1.5 codebase with Python 2.7. With Django 2.0 out, there are likely some changes that need to be made.
+Should work with Django 1.5-1.8 with Python 2.7.
 
-UPDATE: Can confirm this works with Django 1.5-1.7 with Python 2.7.
+Have not confirmed if this works with later or earlier versions yet, or with different versions of Python.
 
-Django 1.8 removes the deprecated `get_query_set`, so `get_queryset` needs to be implemented
+This was originally used in an older Django 1.5 codebase with Python 2.7.
 
 
 ## Backstory

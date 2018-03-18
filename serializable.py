@@ -1,3 +1,4 @@
+import django
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -16,12 +17,22 @@ class SerializableManager(models.Manager):
     # when queried from a related Model, use this Manager
     use_for_related_fields = True
 
-    def get_query_set(self):
+    def get_queryset(self):
         return _SerializableQuerySet(self.model)
+
+    # backward compatibility for Django < 1.6
+    if django.VERSION < (1, 6):
+        get_query_set = get_queryset
+
+    def get_queryset_compat(self):
+        get_queryset = (self.get_query_set
+                        if hasattr(self, 'get_query_set')
+                        else self.get_queryset)
+        return get_queryset()
 
     # implement serialize on the Manager itself (on .objects, before .all())
     def serialize(self, *args):
-        return self.get_query_set().serialize(*args)
+        return self.get_queryset_compat().serialize(*args)
 
 
 class SerializableModel(models.Model):
