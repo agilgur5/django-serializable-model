@@ -176,6 +176,10 @@ I'd encourage you to read the source code, since it's shorter than this README :
 
 This is a good question. It was used in an older Django 1.5 codebase with Python 2.7. With Django 2.0 out, there are likely some changes that need to be made.
 
+UPDATE: Can confirm this works with Django 1.5-1.7 with Python 2.7.
+
+Django 1.8 removes the deprecated `get_query_set`, so `get_queryset` needs to be implemented
+
 
 ## Backstory
 
