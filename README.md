@@ -5,7 +5,7 @@ Django classes to make your models, managers, and querysets serializable, with b
 
 ## Usage
 
-Simplest use case, just implement the `.serialize()` function on a model:
+Simplest use case, just implements the `.serialize()` function on a model:
 
 ```python
 from django.db import models
@@ -25,6 +25,8 @@ new_user = User.objects.create(
 print new_user.serialize()
 # {'id': 1, 'email': 'john@doe.com', 'name': 'John Doe'}
 ```
+
+<br>
 
 With an override of the default `.serialize()` function to only include whitelisted fields in the serialized dictionary:
 
@@ -57,6 +59,7 @@ print new_user.serialize()
 # {'name': 'John Doe'}
 ```
 
+<br>
 
 With a simple, one-to-one relation:
 
@@ -95,6 +98,7 @@ print new_user_refreshed.serialize('settings')
 # {'id': 1, 'email': 'john@doe.com', 'settings': {'email_notifications': False}, 'name': 'John Doe'}
 ```
 
+<br>
 
 With a foreign key relation:
 
@@ -142,6 +146,8 @@ print User.objects.prefetch_related('post_set').get(pk=new_user.pk).serialize('p
 """
 ```
 
+<br>
+
 `.serialize` takes in any number of joins as its `*args` and they can be of any depth, using the same `__` syntax as `prefetch_related`. This means if your `Post` object also had `Comment` objects, you could write:
 
 `User.objects.prefetch_related('post_set__comment_set').serialize('post_set__comment_set')`
@@ -158,12 +164,12 @@ If you're building an API, you can use `JSONResponse` on the dictionary as well.
 
 ## How it works
 
-I'd encourage you to read the source code, since it's shorter than this README :)
-
-By implementing a `.serialize` method on Models, Managers, and QuerySets, this allows for easily customizable whitelists and blacklists (among other things) on a per Model basis.
+Implementing a `.serialize` method on Models, Managers, and QuerySets allows for easily customizable whitelists and blacklists (among other things) on a per Model basis.
 This type of behavior was not possible a simple recursive version of `model_to_dict`, but is often necessary for various security measures and overrides.
 In order to recurse over relations / joins, it accepts the same arguments as the familiar `prefetch_related`, which, in my use cases, often immediately precedes the `.serialize` calls.
 `.serialize` also uses a custom `model_to_dict` function that behaves a bit differently than the built-in one in a variety of ways that are more expected when building an API (see the docstring).
+
+I'd encourage you to read the source code, since it's shorter than this README :)
 
 
 ## Compatibility
@@ -173,7 +179,7 @@ This is a good question. It was used in an older Django 1.5 codebase with Python
 
 ## Backstory
 
-This library was built while I was working on [Yorango](https://github.com/Yorango)'s ad-hoc API. Writing code to serialize various models was complex and quite tedious, resulting in messy spaghetti code for many of our API methods. The best solution I could find was the [Django Full Serializers](http://code.google.com/p/wadofstuff/wiki/DjangoFullSerializers) from [wadofstuff](https://github.com/mattimustang/wadofstuff) as well as some recursive `model_to_dict` snippets online -- none of which gave the option for customizable whitelists and blacklists on a per Model basis.
+This library was built while I was working on [Yorango](https://github.com/Yorango)'s ad-hoc API. Writing code to serialize various models was complex and quite tedious, resulting in messy spaghetti code for many of our API methods. The only solutions I could find online were the [Django Full Serializers](http://code.google.com/p/wadofstuff/wiki/DjangoFullSerializers) from [wadofstuff](https://github.com/mattimustang/wadofstuff) as well as some recursive `model_to_dict` snippets online -- none of which gave the option for customizable whitelists and blacklists on a per Model basis.
 
 I ended up writing my own solution in ~100 LoC that handled basically all of my needs and replaced a ton of messy serialiazation code from all around the codebase. It was used in production with fantastic results, including on queries with quite the complexity and depth, such as:
 
@@ -188,4 +194,4 @@ I ended up writing my own solution in ~100 LoC that handled basically all of my 
 
 ```
 
-Had been meaning to open source this as well as other various useful utility libraries I had made at Yorango and finally got the chance!
+Had been meaning to extract and open source this as well as other various useful utility libraries I had made at Yorango and finally got the chance!
