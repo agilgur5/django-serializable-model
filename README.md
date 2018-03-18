@@ -3,6 +3,33 @@
 Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC (shorter than this README!)
 
 
+## Installation
+
+`pip install django-serializable-model`
+
+It is expected that you already have Django installed
+
+### Compatibility
+
+_This was originally used in an older Django 1.5 codebase with Python 2.7._
+
+<br>
+
+Should work with Django 1.5-1.9 with Python 2.7.
+
+Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
+
+Will have some problems with Django 2.0 as the Manager's `use_for_related_fields` has been removed.
+
+`2to3` shows that there is nothing to change, so should be compatible with Python 3.x
+
+Have not confirmed if this works with earlier versions of Django or Python.
+
+<br>
+
+Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
+
+
 ## Usage
 
 Simplest use case, just implements the `.serialize()` function on a model:
@@ -170,27 +197,6 @@ In order to recurse over relations / joins, it accepts the same arguments as the
 `.serialize` also uses a custom `model_to_dict` function that behaves a bit differently than the built-in one in a variety of ways that are more expected when building an API (see the docstring).
 
 I'd encourage you to read the source code, since it's shorter than this README :)
-
-
-## Compatibility
-
-_This was originally used in an older Django 1.5 codebase with Python 2.7._
-
-<br>
-
-Should work with Django 1.5-1.9 with Python 2.7.
-
-Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
-
-Will have some problems with Django 2.0 as the Manager's `use_for_related_fields` has been removed.
-
-`2to3` shows that there is nothing to change, so should be compatible with Python 3.x
-
-Have not confirmed if this works with earlier versions of Django or Python.
-
-<br>
-
-Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
 
 
 ## Backstory
