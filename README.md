@@ -1,5 +1,7 @@
 # django-serializable-model
 
+[![PyPI version](https://badge.fury.io/py/django-serializable-model.svg)](https://badge.fury.io/py/django-serializable-model)
+
 Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC (shorter than this README!)
 
 
