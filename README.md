@@ -9,7 +9,7 @@ Simplest use case, just implement the `.serialize()` function on a model:
 
 ```python
 from django.db import models
-from django-serilizable-model import SerializableModel
+from django-serializable-model import SerializableModel
 
 
 class User(SerializableModel):
@@ -30,7 +30,7 @@ With an override of the default `.serialize()` function to only include whitelis
 
 ```python
 from django.db import models
-from django-serilizable-model import SerializableModel
+from django-serializable-model import SerializableModel
 
 
 class User(SerializableModel):
@@ -62,7 +62,7 @@ With a simple, one-to-one relation:
 
 ```python
 from django.db import models
-from django-serilizable-model import SerializableModel
+from django-serializable-model import SerializableModel
 
 
 class User(SerializableModel):
@@ -100,7 +100,7 @@ With a foreign key relation:
 
 ```python
 from django.db import models
-from django-serilizable-model import SerializableModel
+from django-serializable-model import SerializableModel
 
 
 class User(SerializableModel):
@@ -175,7 +175,7 @@ This is a good question. It was used in an older Django 1.5 codebase with Python
 
 This library was built while I was working on [Yorango](https://github.com/Yorango)'s ad-hoc API. Writing code to serialize various models was complex and quite tedious, resulting in messy spaghetti code for many of our API methods. The best solution I could find was the [Django Full Serializers](http://code.google.com/p/wadofstuff/wiki/DjangoFullSerializers) from [wadofstuff](https://github.com/mattimustang/wadofstuff) as well as some recursive `model_to_dict` snippets online -- none of which gave the option for customizable whitelists and blacklists on a per Model basis.
 
-I ended up writing my own solution in ~100 LoC that handled basically all of my needs and replaced a ton of messy seriliazation code from all around the codebase. It was used in production with fantastic results, including on queries with quite the complexity and depth, such as:
+I ended up writing my own solution in ~100 LoC that handled basically all of my needs and replaced a ton of messy serialiazation code from all around the codebase. It was used in production with fantastic results, including on queries with quite the complexity and depth, such as:
 
 ```python
 
