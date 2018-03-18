@@ -15,11 +15,12 @@ It is expected that you already have Django installed
 
 _This was originally used in an older Django 1.5 codebase with Python 2.7._
 
-Should work with Django 1.5-1.9 with Python 2.7.
+Should work with Django 1.4-1.9 with Python 2.7.
 - Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
 - Will have some problems with Django 2.0 as the Manager's `use_for_related_fields` has been removed.
 - `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
-- Have not confirmed if this works with earlier versions of Django or Python.
+- Likely works with Django 0.95-1.3 as well; pre 0.95, the Manager API didn't exist
+- Have not confirmed if this works with earlier versions of Python.
 
 Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
 
