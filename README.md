@@ -186,7 +186,7 @@ Will have some problems with Django 2.0 as the Manager's `use_for_related_fields
 
 `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
 
-Have not confirmed if this works with earlier versions of Django yet.
+Have not confirmed if this works with earlier versions of Django or Python.
 
 <br>
 
