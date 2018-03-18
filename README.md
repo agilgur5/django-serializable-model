@@ -5,7 +5,9 @@ Django classes to make your models, managers, and querysets serializable, with b
 
 ## Installation
 
-`pip install django-serializable-model`
+```shell
+pip install django-serializable-model
+```
 
 It is expected that you already have Django installed
 
@@ -13,21 +15,15 @@ It is expected that you already have Django installed
 
 _This was originally used in an older Django 1.5 codebase with Python 2.7._
 
-<br>
-
 Should work with Django 1.5-1.9 with Python 2.7.
-
-Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
-
-Will have some problems with Django 2.0 as the Manager's `use_for_related_fields` has been removed.
-
-`2to3` shows that there is nothing to change, so should be compatible with Python 3.x
-
-Have not confirmed if this works with earlier versions of Django or Python.
-
-<br>
+- Likely works with Django 1.10 and 1.11, though not 100% sure that `._meta.fields` usage works the same way in these.
+- Will have some problems with Django 2.0 as the Manager's `use_for_related_fields` has been removed.
+- `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
+- Have not confirmed if this works with earlier versions of Django or Python.
 
 Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
+
+<br>
 
 
 ## Usage
@@ -177,9 +173,18 @@ print User.objects.prefetch_related('post_set').get(pk=new_user.pk).serialize('p
 
 `.serialize` takes in any number of joins as its `*args` and they can be of any depth, using the same `__` syntax as `prefetch_related`. This means if your `Post` object also had `Comment` objects, you could write:
 
-`User.objects.prefetch_related('post_set__comment_set').serialize('post_set__comment_set')`
+```python
+User.objects.prefetch_related('post_set__comment_set').serialize('post_set__comment_set')
+```
 
-and get an array of `Comment` dictionaries within each `Post` dictionary.
+and get an array of `Comment` dictionaries within each `Post` dictionary. If your `Post` object also had `Like` objects:
+
+```python
+joins = ['post_set__comment_set', 'post_set__like_set']
+User.objects.prefetch_related(*joins).serialize(*joins)
+```
+
+<br>
 
 
 ### JSON and APIs
@@ -187,6 +192,8 @@ and get an array of `Comment` dictionaries within each `Post` dictionary.
 Since `.serialize` outputs a dictionary, one can turn it into JSON simply by using `json.dumps` on the dictionary.
 
 If you're building an API, you can use `JSONResponse` on the dictionary as well.
+
+<br>
 
 
 ## How it works
