@@ -212,6 +212,7 @@ I'd encourage you to read the source code, since it's shorter than this README :
 ## Backstory
 
 This library was built while I was working on [Yorango](https://github.com/Yorango)'s ad-hoc API. Writing code to serialize various models was complex and quite tedious, resulting in messy spaghetti code for many of our API methods. The only solutions I could find online were the [Django Full Serializers](http://code.google.com/p/wadofstuff/wiki/DjangoFullSerializers) from [wadofstuff](https://github.com/mattimustang/wadofstuff) as well as some recursive `model_to_dict` snippets online -- none of which gave the option for customizable whitelists and blacklists on a per Model basis.
+Later on, I found that [Django REST Framework's ModelSerializers](http://www.django-rest-framework.org/api-guide/serializers#modelserializer) do offer similar functionality to what I was looking for (and _without_ requiring buy-in to the rest of the framework), albeit with some added complexity and robustness.
 
 I ended up writing my own solution in ~100 LoC that handled basically all of my needs and replaced a ton of messy serialiazation code from all around the codebase. It was used in production with fantastic results, including on queries with quite the complexity and depth, such as:
 
