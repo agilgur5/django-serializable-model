@@ -13,7 +13,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='django-serializable-model',
-    version='0.0.1',
+    version='0.0.2',
     description=('Django classes to make your models, managers, and ' +
                  'querysets serializable, with built-in support for related ' +
                  'objects in ~100 LoC'),
