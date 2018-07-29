@@ -44,7 +44,7 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
     ],
-    keywords=('django serializer serializers serializer-django serialize' +
+    keywords=('django serializer serializers serializer-django serialize ' +
               'json dict queryset model modelmanager full wadofstuff'),
     py_modules=['serializable'],
     python_requires='>=2.7, <4',
