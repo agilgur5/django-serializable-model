@@ -5,6 +5,14 @@
 Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC (shorter than this README!)
 
 
+## Table of Contents
+
+I. [Installation](#installation) <br />
+II. [Usage](#usage) <br />
+III. [How it Works](#how-it-works) <br />
+IV. [Backstory](#backstory)
+
+
 ## Installation
 
 ```shell
