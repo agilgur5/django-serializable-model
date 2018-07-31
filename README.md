@@ -10,7 +10,8 @@ Django classes to make your models, managers, and querysets serializable, with b
 I. [Installation](#installation) <br />
 II. [Usage](#usage) <br />
 III. [How it Works](#how-it-works) <br />
-IV. [Backstory](#backstory)
+IV. [Related Libraries](#related-libraries) <br />
+V. [Backstory](#backstory)
 
 
 ## Installation
@@ -216,6 +217,14 @@ In order to recurse over relations / joins, it accepts the same arguments as the
 
 I'd encourage you to read the source code, since it's shorter than this README :)
 
+
+## Related Libraries
+
+1. [django-api-decorators](https://github.com/agilgur5/django-api-decorators)
+  - `Tiny decorator functions to make it easier to build an API using Django in ~100 LoC`
+
+
+<br>
 
 ## Backstory
 
