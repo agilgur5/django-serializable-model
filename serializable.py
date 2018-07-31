@@ -14,8 +14,10 @@ class _SerializableQuerySet(models.query.QuerySet):
 
 class SerializableManager(models.Manager):
     """Implements table-level serialization via SerializableQuerySet"""
-    # when queried from a related Model, use this Manager
-    use_for_related_fields = True
+    # backward compatibility for Django < 1.10
+    if django.VERSION < (1, 10):
+        # when queried from a related Model, use this Manager
+        use_for_related_fields = True
 
     def get_queryset(self):
         return _SerializableQuerySet(self.model)
@@ -44,6 +46,8 @@ class SerializableModel(models.Model):
 
     class Meta:
         abstract = True
+        # when queried from a related Model, use this Manager
+        base_manager_name = 'SerializableManager'
 
     def serialize(self, *args, **kwargs):
         """
