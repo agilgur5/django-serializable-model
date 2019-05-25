@@ -4,6 +4,9 @@
 [![releases](https://img.shields.io/github/tag-pre/agilgur5/django-serializable-model.svg)](https://github.com/agilgur5/django-serializable-model/releases)
 [![commits](https://img.shields.io/github/commits-since/agilgur5/django-serializable-model/latest.svg)](https://github.com/agilgur5/django-serializable-model/commits/master)
 
+[![dm](https://img.shields.io/pypi/dm/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
+[![dw](https://img.shields.io/pypi/dw/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
+
 Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC (shorter than this README!)
 
 ## Table of Contents
