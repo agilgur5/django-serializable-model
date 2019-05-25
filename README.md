@@ -4,7 +4,6 @@
 
 Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC (shorter than this README!)
 
-
 ## Table of Contents
 
 I. [Installation](#installation) <br />
@@ -12,7 +11,6 @@ II. [Usage](#usage) <br />
 III. [How it Works](#how-it-works) <br />
 IV. [Related Libraries](#related-libraries) <br />
 V. [Backstory](#backstory)
-
 
 ## Installation
 
@@ -27,6 +25,7 @@ It is expected that you already have Django installed
 _This was originally used in an older Django 1.5 codebase with Python 2.7._
 
 Should work with Django 1.4-1.9 with Python 2.7-3.x.
+
 - Likely works with Django 1.10-2.x, though not 100% sure that [`._meta.fields` usage works the same way in these](https://docs.djangoproject.com/en/2.0/ref/models/meta/#migrating-old-meta-api).
 - `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
 - Likely works with Django 0.95-1.3 as well; pre 0.95, the Manager API didn't exist
@@ -35,7 +34,6 @@ Should work with Django 1.4-1.9 with Python 2.7-3.x.
 Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
 
 <br>
-
 
 ## Usage
 
@@ -197,7 +195,6 @@ User.objects.prefetch_related(*joins).serialize(*joins)
 
 <br>
 
-
 ### JSON and APIs
 
 Since `.serialize` outputs a dictionary, one can turn it into JSON simply by using `json.dumps` on the dictionary.
@@ -205,7 +202,6 @@ Since `.serialize` outputs a dictionary, one can turn it into JSON simply by usi
 If you're building an API, you can use `JSONResponse` on the dictionary as well.
 
 <br>
-
 
 ## How it works
 
@@ -216,12 +212,10 @@ In order to recurse over relations / joins, it accepts the same arguments as the
 
 I'd encourage you to read the source code, since it's shorter than this README :)
 
-
 ## Related Libraries
 
-1. [django-api-decorators](https://github.com/agilgur5/django-api-decorators)
+- [django-api-decorators](https://github.com/agilgur5/django-api-decorators)
   - `Tiny decorator functions to make it easier to build an API using Django in ~100 LoC`
-
 
 <br>
 
