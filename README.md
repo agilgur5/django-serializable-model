@@ -1,9 +1,11 @@
 # django-serializable-model
 
+[//]: # (releases / versioning)
 [![PyPI version](https://img.shields.io/pypi/v/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 [![releases](https://img.shields.io/github/tag-pre/agilgur5/django-serializable-model.svg)](https://github.com/agilgur5/django-serializable-model/releases)
 [![commits](https://img.shields.io/github/commits-since/agilgur5/django-serializable-model/latest.svg)](https://github.com/agilgur5/django-serializable-model/commits/master)
 
+[//]: # (downloads)
 [![dm](https://img.shields.io/pypi/dm/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 [![dw](https://img.shields.io/pypi/dw/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 
