@@ -48,7 +48,12 @@ setup(
     ],
     keywords=('django serializer serializers serializer-django serialize ' +
               'json dict queryset model modelmanager full wadofstuff'),
-    py_modules=['serializable'],
+    py_modules=[
+        'django_serializable_model',
+        # this is the original, unintended name, and should be removed in the
+        # first breaking/major release, v1.0.0. See `serializable.py` comment.
+        'serializable'
+    ],
     python_requires='>=2.7, <4',
     project_urls={  # Optional
         'Source': 'https://github.com/agilgur5/django-serializable-model/',

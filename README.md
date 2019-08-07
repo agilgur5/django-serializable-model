@@ -48,7 +48,7 @@ Simplest use case, just implements the `.serialize()` function on a model:
 
 ```python
 from django.db import models
-from django-serializable-model import SerializableModel
+from django_serializable_model import SerializableModel
 
 
 class User(SerializableModel):
@@ -71,7 +71,7 @@ With an override of the default `.serialize()` function to only include whitelis
 
 ```python
 from django.db import models
-from django-serializable-model import SerializableModel
+from django_serializable_model import SerializableModel
 
 
 class User(SerializableModel):
@@ -104,7 +104,7 @@ With a simple, one-to-one relation:
 
 ```python
 from django.db import models
-from django-serializable-model import SerializableModel
+from django_serializable_model import SerializableModel
 
 
 class User(SerializableModel):
@@ -143,7 +143,7 @@ With a foreign key relation:
 
 ```python
 from django.db import models
-from django-serializable-model import SerializableModel
+from django_serializable_model import SerializableModel
 
 
 class User(SerializableModel):
