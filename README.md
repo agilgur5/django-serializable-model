@@ -33,7 +33,8 @@ Should work with Django 1.4-1.9 with Python 2.7-3.x.
 
 - Likely works with Django 1.10-2.x, though not 100% sure that [`._meta.fields` usage works the same way in these](https://docs.djangoproject.com/en/2.0/ref/models/meta/#migrating-old-meta-api).
 - `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
-- Likely works with Django 0.95-1.3 as well; pre 0.95, the Manager API didn't exist
+- Likely works with Django 0.95-1.3 as well
+  - Pre 0.95, the Manager API didn't exist, so some functionality may be limited in those versions, or it may just error on import
 - Have not confirmed if this works with earlier versions of Python.
 
 Please submit a PR or file an issue if you have a compatibility problem or have confirmed compatibility on versions.
