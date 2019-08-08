@@ -100,7 +100,7 @@ def model_to_dict_custom(instance, fields=None, exclude=None, editable=True):
     data = {}
     for f in opts.fields:
         # skip uneditable fields if editable kwarg is False
-        if not editable and not f.ediable:
+        if not editable and not f.editable:
             continue
         # whitelisted fields only if fields kwarg is passed
         if fields and f.name not in fields:
