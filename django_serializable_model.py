@@ -47,7 +47,7 @@ class SerializableModel(models.Model):
     class Meta:
         abstract = True
         # when queried from a related Model, use this Manager
-        base_manager_name = 'SerializableManager'
+        base_manager_name = 'objects'
 
     def serialize(self, *args, **kwargs):
         """
