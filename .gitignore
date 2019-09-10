@@ -1,3 +1,6 @@
+# we use multiple versions of Python and deps, so lockfile doesn't quite fit
+# may add it back in later once Poetry usage stabilizes
+poetry.lock
 
 # Created by https://www.gitignore.io/api/python
 
