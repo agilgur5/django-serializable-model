@@ -64,9 +64,13 @@ keywords=[
 "Tracker" = "https://github.com/agilgur5/django-serializable-model/issues"
 
 [tool.poetry.dependencies]
-python = "^2.7 || ^3"
+python = "^3.5"
 
 [tool.poetry.dev-dependencies]
+django = "^2.2"
+pytest = "^5.1"
+pytest-django = "^3.5"
+pytest-cov = "^2.7"
 
 [build-system]
 requires = ["poetry>=0.12"]
