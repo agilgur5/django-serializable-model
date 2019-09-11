@@ -5,3 +5,5 @@ before_install: pip install poetry
 install: poetry install
 
 script: poetry run pytest tests/test_project/
+# upload coverage reports to CodeCov
+after_script: bash <(curl -s https://codecov.io/bash)
