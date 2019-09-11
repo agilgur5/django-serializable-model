@@ -35,6 +35,8 @@ Should work with Django 1.4-1.9 with Python 2.7-3.x.
 - Likely works with Django 1.10-2.x, though not 100% sure that [`._meta.fields` usage works the same way in these](https://docs.djangoproject.com/en/2.0/ref/models/meta/#migrating-old-meta-api).
 - `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
 - Likely works with Django 0.95-1.3 as well
+  - Pre 1.3 does not support the [`on_delete` argument](https://django.readthedocs.io/en/1.3.X/releases/1.3.html#configurable-delete-cascade) on relations.
+  This only affects the usage and examples below; the internals are unaffected.
   - Pre 0.95, the Manager API didn't exist, so some functionality may be limited in those versions, or it may just error on import
 - Have not confirmed if this works with earlier versions of Python.
 
@@ -113,7 +115,8 @@ class User(SerializableModel):
 
 
 class Settings(SerializableModel):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True,
+        on_delete=models.CASCADE)
     email_notifications = models.BooleanField(default=False)
 
     def serialize(self, *args):
@@ -152,7 +155,7 @@ class User(SerializableModel):
 
 
 class Post(SerializableModel):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
 
 
