@@ -17,7 +17,8 @@ class User(SerializableModel):
 
 
 class Settings(SerializableModel):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True,
+        on_delete=models.CASCADE)
     email_notifications = models.BooleanField(default=False)
 
     def serialize(self, *args):
@@ -26,5 +27,5 @@ class Settings(SerializableModel):
 
 
 class Post(SerializableModel):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
