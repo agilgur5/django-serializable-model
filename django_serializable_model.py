@@ -46,8 +46,11 @@ class SerializableModel(models.Model):
 
     class Meta:
         abstract = True
-        # when queried from a related Model, use this Manager
-        base_manager_name = 'objects'
+
+        # doesn't exist in <1.10, so Meta's typecheck will throw without guard
+        if django.VERSION >= (1, 10):
+            # when queried from a related Model, use this Manager
+            base_manager_name = 'objects'
 
     def serialize(self, *args, **kwargs):
         """
