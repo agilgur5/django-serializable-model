@@ -31,12 +31,14 @@ It is expected that you already have Django installed
 
 ### Compatibility
 
-_This was originally used in an older Django 1.5 codebase with Python 2.7._
+[![Python versions](https://img.shields.io/pypi/pyversions/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
+[![Django versions](https://img.shields.io/pypi/djversions/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 
-Should work with Django 1.4-1.9 with Python 2.7-3.x.
-
-- Likely works with Django 1.10-2.x, though not 100% sure that [`._meta.fields` usage works the same way in these](https://docs.djangoproject.com/en/2.0/ref/models/meta/#migrating-old-meta-api).
-- `2to3` shows that there is nothing to change, so should be compatible with Python 3.x
+- Should work with Django 1.4-2.x and Python 2.7-3.x
+  - [Tested](https://travis-ci.org/agilgur5/django-serializable-model) on Django 2.2 and Python 3.7 (tests for more versions coming soon)
+  - Originally ripped out of a codebase with an older Django 1.5 and Python 2.7
+  - Has a handful of Django backward compatibility fixes built-in
+  - `2to3` shows no changes
 - Likely works with Django 0.95-1.3 as well
   - Pre 1.3 does not support the [`on_delete` argument](https://django.readthedocs.io/en/1.3.X/releases/1.3.html#configurable-delete-cascade) on relations.
   This only affects the usage and examples below; the internals are unaffected.
