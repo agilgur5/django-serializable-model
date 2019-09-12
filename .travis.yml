@@ -1,8 +1,16 @@
 language: python
-python: '3.7'
+python: '3.5'
+
+# test multiple Django versions
+env:
+  - DJANGO_VERSION=2.2
+  - DJANGO_VERSION=1.9
 
 before_install: pip install poetry
-install: poetry install
+install:
+  - poetry install
+  # override the version for each test
+  - poetry add -D django="~$DJANGO_VERSION"
 
 script: poetry run pytest tests/test_project/
 # upload coverage reports to CodeCov
