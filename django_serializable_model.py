@@ -3,6 +3,14 @@ from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 
 
+# noqa | all models need an explicit or inferred app_label (https://stackoverflow.com/q/4382032/3431180)
+# noqa | abstract models shouldn't though -- this is fixed in 1.8+ (https://code.djangoproject.com/ticket/24981)
+# change __name__ instead of explicitly setting app_label as that would then
+# need to be overridden by Models that extend this
+if django.VERSION < (1, 8):
+    __name__ = 'django_serializable_model.django_serializable_model'
+
+
 class _SerializableQuerySet(models.query.QuerySet):
     """Implements the serialize method on a QuerySet"""
     def serialize(self, *args):
@@ -43,6 +51,11 @@ class SerializableModel(models.Model):
     dictionaries, both at the row and table level, with some overriding allowed
     """
     objects = SerializableManager()
+
+    # this is needed due to the __name__ hackiness; will be incorrect and cause
+    # Django to error when loading this model otherwise
+    if django.VERSION < (1, 8):
+        __module__ = 'django_serializable_model'
 
     class Meta:
         abstract = True
