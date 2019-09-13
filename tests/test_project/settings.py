@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,7 +19,8 @@ SECRET_KEY = 'test_secret_key'
 
 # needed to discover models in Django tests
 INSTALLED_APPS = [
-    'test_app.apps.TestAppConfig'
+    # AppConfig only exists in Django 1.9+
+    'test_app.apps.TestAppConfig' if django.VERSION >= (1, 9) else 'test_app'
 ]
 
 # will use an in-memory database during testing when using sqlite3 engine

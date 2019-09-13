@@ -2,9 +2,18 @@ language: python
 python: '3.5'
 
 # test multiple Django versions
-env:
-  - DJANGO_VERSION=2.2
-  - DJANGO_VERSION=1.9
+matrix:
+  include:
+    - env: DJANGO_VERSION=2.2
+    - env: DJANGO_VERSION=1.9
+    - env: DJANGO_VERSION=1.5
+      python: '3.4'  # Python 3.5+ will error on Django < 1.8: https://stackoverflow.com/a/36000103/3431180
+      # Poetry fails to resolve multi-constrant deps, so don't use it (https://github.com/sdispater/poetry/issues/666#issuecomment-531100022)
+      before_install: skip
+      install:
+        # django 1.5 needs pytest-django 2.9 needs pytest 3.5 needs pytest-cov 2.6
+        - pip install django==1.5 pytest-django==2.9 pytest==3.5 pytest-cov==2.6
+        - pip install -e .  # won't be able to do this if setup.py is removed!
 
 before_install: pip install poetry
 install:
@@ -12,6 +21,6 @@ install:
   # override the version for each test
   - poetry add -D django="~$DJANGO_VERSION"
 
-script: poetry run pytest tests/test_project/
+script: pytest tests/test_project/
 # upload coverage reports to CodeCov
 after_script: bash <(curl -s https://codecov.io/bash)
