@@ -34,11 +34,10 @@ It is expected that you already have Django installed
 [![Python versions](https://img.shields.io/pypi/pyversions/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 [![Django versions](https://img.shields.io/pypi/djversions/django-serializable-model.svg)](https://pypi.org/project/django-serializable-model/)
 
+[Tested](https://travis-ci.org/agilgur5/django-serializable-model) on Django 2.2, 1.11, 1.9, and 1.5 as well as Python 3.5, 3.4, and 2.7
+
 - Should work with Django 1.4-2.x and Python 2.7-3.x
-  - [Tested](https://travis-ci.org/agilgur5/django-serializable-model) on Django 2.2 and Python 3.7 (tests for more versions coming soon)
-  - Originally ripped out of a codebase with an older Django 1.5 and Python 2.7
-  - Has a handful of Django backward compatibility fixes built-in
-  - `2to3` shows no changes
+  - Has several Django backward & forward compatibility fixes built-in
 - Likely works with Django 0.95-1.3 as well
   - Pre 1.3 does not support the [`on_delete` argument](https://django.readthedocs.io/en/1.3.X/releases/1.3.html#configurable-delete-cascade) on relations.
   This only affects the usage and examples below; the internals are unaffected.
