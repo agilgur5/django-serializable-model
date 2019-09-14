@@ -22,7 +22,7 @@ class _SerializableQuerySet(models.query.QuerySet):
 
 class SerializableManager(models.Manager):
     """Implements table-level serialization via SerializableQuerySet"""
-    # backward compatibility for Django < 1.10
+    # replaced by base_manager_name in Model.Meta in Django 1.10+
     if django.VERSION < (1, 10):
         # when queried from a related Model, use this Manager
         use_for_related_fields = True
@@ -30,7 +30,7 @@ class SerializableManager(models.Manager):
     def get_queryset(self):
         return _SerializableQuerySet(self.model)
 
-    # backward compatibility for Django < 1.6
+    # renamed to get_queryset in Django 1.6+
     if django.VERSION < (1, 6):
         get_query_set = get_queryset
 
