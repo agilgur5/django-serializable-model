@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "django-serializable-model"
 version = "0.0.5"
-description = "Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~100 LoC"
+description = "Django classes to make your models, managers, and querysets serializable, with built-in support for related objects in ~150 LoC"
 readme = "README.md"
 
 packages = [
