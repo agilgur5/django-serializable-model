@@ -16,7 +16,7 @@ setup(
     version='0.0.5',
     description=('Django classes to make your models, managers, and ' +
                  'querysets serializable, with built-in support for related ' +
-                 'objects in ~100 LoC'),
+                 'objects in ~150 LoC'),
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/agilgur5/django-serializable-model',
