@@ -6,10 +6,13 @@ matrix:
   include:
     # Python 3.x envs
     - env: DJANGO_VERSION=2.2
+      install: poetry install  # no need to override Django, this is default
+
     - env: DJANGO_VERSION=1.9
+
     - env: DJANGO_VERSION=1.5
       python: '3.4'  # Python 3.5+ will error on Django < 1.8: https://stackoverflow.com/a/36000103/3431180
-      # Poetry fails to resolve multi-constrant deps, so don't use it (https://github.com/sdispater/poetry/issues/666#issuecomment-531100022)
+      # Poetry can't specify constraints that rely on other deps
       before_install: skip
       install:
         # django 1.5 needs pytest-django 2.9 needs pytest 3.5 needs pytest-cov 2.6
@@ -19,16 +22,9 @@ matrix:
     # Python 2.7 envs
     - env: DJANGO_VERSION=1.11  # latest Django that supports 2.7
       python: '2.7'
-      # Poetry fails to resolve multi-constrant deps, so don't use it (https://github.com/sdispater/poetry/issues/666#issuecomment-531100022)
-      before_install: skip
-      install:
-        # pytest 5+ does not support Python 2.7
-        - pip install django==1.11 "pytest<5" pytest-django pytest-cov
-        - rm pyproject.toml  # editable install reads from here somehow and bugs out on 2.7!!??!!: https://travis-ci.org/agilgur5/django-serializable-model/jobs/584822609
-        - pip install -e .  # won't be able to do this if setup.py is removed!
 
 
-before_install: pip install poetry
+before_install: pip install "poetry>=1.0.0b3"
 install:
   - poetry install
   # override the version for each test
